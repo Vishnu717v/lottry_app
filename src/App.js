@@ -10,14 +10,20 @@ function App() {
   const [numberColor, setNumberColor] = useState('#000000'); // Default color black
   const printRef = useRef();
 
+  const numbersArray = [];
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/generate', {
-        start: Number(start),
-        end: Number(end),
-      });
-      setNumbers(response.data);
+      // const response = await axios.post('http://localhost:5000/generate', {
+        // start: Number(start),
+        // end: Number(end),
+      // });
+      for (let i = start; i <= end; i++) {
+        numbersArray.push(i);
+      }
+      setNumbers(numbersArray);
     } catch (error) {
       console.error('Error generating numbers:', error);
     }
@@ -61,3 +67,4 @@ function App() {
 }
 
 export default App;
+
